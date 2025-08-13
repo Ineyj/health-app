@@ -280,18 +280,25 @@ export default function FirstAidApp() {
             </View>
             <View className="gap-2">
               <TouchableOpacity
-                onPress={() => callEmergency("911")}
+                onPress={() => callEmergency("191")}
                 className="bg-white border border-gray-300 rounded-2xl p-3 flex-row items-center"
               >
                 <Ionicons name="call" size={20} color="#374151" />
-                <Text className="ml-2 text-gray-700">Emergency Services: 911</Text>
+                <Text className="ml-2 text-gray-700">Emergency Services: 191</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => callEmergency("18002221222")}
+                onPress={() => callEmergency("192")}
                 className="bg-white border border-gray-300 rounded-2xl p-3 flex-row items-center"
               >
                 <Ionicons name="call" size={20} color="#374151" />
-                <Text className="ml-2 text-gray-700">Poison Control: 1-800-222-1222</Text>
+                <Text className="ml-2 text-gray-700">Fire Service: 192</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => callEmergency("18555")}
+                className="bg-white border border-gray-300 rounded-2xl p-3 flex-row items-center"
+              >
+                <Ionicons name="call" size={20} color="#374151" />
+                <Text className="ml-2 text-gray-700">Police: 18555</Text>
               </TouchableOpacity>
             </View>
           </View>
