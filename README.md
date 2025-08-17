@@ -1,50 +1,134 @@
-# Welcome to your Expo app 👋
+# Health App - First Aid Quick Guide
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A React Native health app with authentication that provides instant first aid instructions for various emergencies.
 
-## Get started
+## Features
 
-1. Install dependencies
+### 🔐 Authentication System
+- **User Login**: Secure login with email and password validation
+- **User Registration**: Sign up with name, email, and password
+- **Session Management**: Persistent login sessions using AsyncStorage
+- **Protected Routes**: Main app content is only accessible to authenticated users
 
+### 🚑 First Aid Features
+- **Emergency Guides**: Comprehensive first aid instructions for various situations
+- **Search & Filter**: Find guides by keywords or categories
+- **Favorites**: Save frequently used guides for quick access
+- **Emergency Contacts**: Quick access to emergency service numbers
+- **Severity Levels**: Color-coded emergency levels (Minor, Moderate, Emergency)
+
+## Authentication Details
+
+### Demo Credentials
+- **Email**: `demo@example.com`
+- **Password**: `password123`
+
+### User Registration
+- Create new accounts with custom credentials
+- Password requirements: minimum 6 characters
+- Automatic login after successful registration
+
+## Setup Instructions
+
+### Prerequisites
+- Node.js (v16 or higher)
+- Expo CLI
+- iOS Simulator or Android Emulator (or physical device)
+
+### Installation
+
+1. **Install Dependencies**
    ```bash
    npm install
    ```
 
-2. Start the app
-
+2. **Install AsyncStorage** (if not already installed)
    ```bash
-   npx expo start
+   npm install @react-native-async-storage/async-storage
    ```
 
-In the output, you'll find options to open the app in a
+3. **Start the Development Server**
+   ```bash
+   npm start
+   ```
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+4. **Run on Device/Simulator**
+   - Press `i` for iOS Simulator
+   - Press `a` for Android Emulator
+   - Scan QR code with Expo Go app on physical device
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Project Structure
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+Health-App-2/
+├── app/                    # Expo Router screens
+│   ├── _layout.tsx        # Root layout with authentication
+│   ├── index.tsx          # Main app screen (protected)
+│   ├── login.tsx          # Login screen
+│   ├── signup.tsx         # Registration screen
+│   └── guide/[id].tsx     # Individual guide details
+├── components/             # Reusable components
+│   ├── ui/                # UI components (Button, Input, etc.)
+│   └── auth-guard.tsx     # Authentication guard component
+├── lib/                    # Utilities and contexts
+│   ├── auth-context.tsx   # Authentication context
+│   └── utils.ts           # Helper functions
+└── assets/                 # Images, fonts, and static files
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Authentication Flow
 
-## Learn more
+1. **App Launch**: Checks for existing user session
+2. **Unauthenticated**: Redirects to login screen
+3. **Login**: Validates credentials and creates session
+4. **Signup**: Creates new account and logs in automatically
+5. **Main App**: Protected content with user-specific features
+6. **Logout**: Clears session and returns to login
 
-To learn more about developing your project with Expo, look at the following resources:
+## Security Features
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+- **Input Validation**: Client-side form validation
+- **Session Persistence**: Secure storage of user sessions
+- **Protected Routes**: Authentication guard prevents unauthorized access
+- **Secure Logout**: Confirmation dialog and session cleanup
 
-## Join the community
+## Customization
 
-Join our community of developers creating universal apps.
+### Adding New Emergency Guides
+Edit the `firstAidGuides` array in `app/index.tsx` to add new emergency scenarios.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+### Styling
+The app uses NativeWind (Tailwind CSS for React Native) for styling. Modify `tailwind.config.js` for custom design tokens.
+
+### Authentication Backend
+Replace the mock authentication in `lib/auth-context.tsx` with real API calls to your backend service.
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Metro Bundler Errors**: Clear cache with `npx expo start --clear`
+2. **Authentication Issues**: Check AsyncStorage permissions and clear app data
+3. **Styling Issues**: Ensure NativeWind is properly configured
+
+### Development Tips
+
+- Use Expo DevTools for debugging
+- Enable Fast Refresh for rapid development
+- Test on both iOS and Android for compatibility
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## License
+
+This project is licensed under the MIT License.
+
+## Support
+
+For support and questions, please open an issue in the repository.
